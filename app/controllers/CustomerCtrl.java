@@ -47,15 +47,34 @@ public class CustomerCtrl extends Controller {
 
     //----------------------------MAIN CONTROLLERS--------------------
 
-//Profile---------------------- J.T.
+//Profile---------------------- A.S.
     public Result profile(Long cat, String filter) {
         
         return ok(profile.render(getCurrentCustomer(), User.getUserById(session().get("email")), categoriesList, cat, filter));
     }
 
     public Result profileEdit(Long cat, String filter) {
-        return ok(profileEdit.render(getCurrentCustomer(), User.getUserById(session().get("email")), categoriesList, cat, filter));
+        Form<Factory> p1 = formFactory.form(Factory.class);
+        
+        return ok(profileEdit.render(getCurrentCustomer(), User.getUserById(session().get("email")), categoriesList,p1, cat, filter));
     }
+
+    public Result profileSubmit(Long cat, String filter) {
+	Form<Factory> s1 = formFactory.form(Factory.class).bindFromRequest();
+    Factory p1 = s1.get();
+	
+	Customer currentC = getCurrentCustomer();
+        currentC.setStreet1(p1.getStrFormat1());
+        currentC.setStreet2(p1.getStrFormat2());
+        currentC.setTown(p1.getStrFormat3());
+        currentC.setPostCode(p1.getStrFormat4());
+        currentC.setCountry(p1.getStrFormat5());
+        currentC.update();
+        
+
+        return redirect(controllers.routes.CustomerCtrl.profile(cat, filter));
+    }
+
 
 //Orders----------------------- J.T.
     public Result orderHistory(Long cat, String filter) {

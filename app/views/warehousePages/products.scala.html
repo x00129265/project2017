@@ -61,18 +61,13 @@
                   <td>@p.getStock()</td>
                   <td>&euro; @("%.2f".format(p.getProduct().getPrice))</td>
                   <!-- Edit product button -->
-                  <td>@if(warehouse.isMain() == true){
-                      <a href="@routes.WarehouseController.supplyWarehouse(p.getProduct().getId())" class="btn-xs btn-danger">
-                      <span class="glyphicon glyphicon-pencil"></span></a>
-                      }
-                  </td>
-                  <!-- Delete product button -->
+                  @if(warehouse.isMain() == true){
                   <td>
-                      <a href="" class="btn-xs btn-danger"
-                        onclick="return confirmDel();">
-                        <span class="glyphicon glyphicon-trash"></span>
-                      </a>
+                      <a href="@routes.WarehouseController.supplyWarehouse(p.getProduct().getId())" class="btn-xs btn-danger">
+                      <span class="glyphicon glyphicon-pencil"></span></a>                     
                   </td>
+                  }
+                  
               </tr>
 					} <!-- End of For loop -->
           </tbody>

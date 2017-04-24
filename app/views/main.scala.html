@@ -62,7 +62,8 @@
                                @if(user.getRole == "customer"){
                            <li><a href="@routes.CustomerCtrl.profile(catId, filter)"><i class="fa fa-user"></i> Account</a></li>
                            <li><a href="@routes.WishlistCtrl.showWishlist(catId, filter)"><i class="fa fa-star"></i> Wishlist</a></li>
-                           <li><a href="@routes.ShoppingCtrl.showBasket(catId, filter)"><i class="fa fa-shopping-cart"></i> Cart</a></li>}
+                           <li><a href="@routes.ShoppingCtrl.showBasket(catId, filter)"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                }
                            <li @if(title == "Login"){class="active"}>  
                                <a href="@controllers.routes.LoginController.logout()">Logout @user.getfName()</a>
                            } else {
@@ -123,7 +124,14 @@
                         <li><a href="@controllers.routes.HomeController.index()" class="active">Home</a></li>
                         <li><a href="@routes.HomeController.products()">Products</a></li>
                         <li><a href="@routes.HomeController.aboutUs()">About Us</a></li>
-                        
+                        @if(user != null) {
+                            @if(user.getRole == "admin"){
+                        <li><a href="@routes.AdminController.products()">Admin</a></li>
+                            }
+                            @if(user.getRole == "warehouse"){    
+                        <li><a href="@routes.WarehouseController.ordersW()">Warehouse</a></li>
+                            }
+                        }    
                      </ul>
                   </div>
                </div>

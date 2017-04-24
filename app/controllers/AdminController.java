@@ -101,7 +101,7 @@ public class AdminController extends Controller {
 
         if (cat == 0) {
             // Get list of all categories in ascending order
-            productsList = Product.findAll("");
+            productsList = Product.find.where().orderBy("id desc").findList();
         }
         else {
             // Get products for selected category
@@ -644,18 +644,20 @@ public class AdminController extends Controller {
     public Result updateWarehouseSubmit(String email) {
         
         Form<Warehouse> updateWarehouseForm = formFactory.form(Warehouse.class).bindFromRequest();
-
+        // boolean status = Warehouse.findWarehouseByEmail(email).isMain();
         Warehouse w = updateWarehouseForm.get();
+        Warehouse old = Warehouse.find.ref(email);
 
-        if(User.findByEmail(w.getEmail()) != null){
+        
+        if(User.findByEmail(w.getEmail()) != null && old.getEmail() != email){
             if(!w.getEmail().equals(email)){
             flash("fail", "Email is used alre ady");
             return redirect(routes.AdminController.updateWarehouse(email));
             }
         }
-        boolean status = Warehouse.findWarehouseByEmail(email).isMain();
-       
-        Warehouse.find.ref(email).delete();
+        
+        
+        
         if(updateWarehouseForm.hasErrors()){
             flash("fail", "Email " + w.getEmail() + "is already in our database.");
             return redirect(routes.AdminController.updateWarehouse(email));
@@ -665,11 +667,44 @@ public class AdminController extends Controller {
         if (!w.getPassword().equals(w.getPassword2())) {
             flash("fail", "Passwords don't match");
         }
+        List<ProductWarehouse> pWList = new ArrayList<>();
+        List<Product> pList = Product.findAll("");
+        ProductWarehouse pW;
+        ProductWarehouse pWnew;
+            for(int i = 0; i < pList.size(); i++){
+                // for(int j = 0; i < pList.get(i).getProductWarehouses().size(); j++){
+                    pW = ProductWarehouse.findWarehouseProduct(email, pList.get(i).getId());
+                    pWnew = new ProductWarehouse();
+                    pWnew.setWarehouse(w);
+                    pWnew.setProduct(pList.get(i));
+                    pWnew.setStock(pW.getStock());
+                    pWnew.setId(pW.getId());
+                    Warehouse.find.ref(email).removeProductWarehouse(pW);
+                    
+                    pWList.add(pWnew);
+                // }
+            } 
+
+        
 
         if (w.getPassword().equals(w.getPassword2())){
             flash("success", "Warehouse has been updated");
-            w.setMain(status);
-            w.save();
+            Warehouse.find.ref(email).delete();
+            //Assign the status of warehouse
+            // w.setMain(old.isMain());
+            w.save();  
+            for(int i = 0; i < pWList.size(); i++){
+                    pWnew = new ProductWarehouse();
+                    pWnew = pWList.get(i);
+                    pWnew.save();
+                    pWnew.getWarehouse().addProductWarehouse(pWnew);
+                    pWnew.getWarehouse().update();                   
+            } 
+            
+                    
+                    
+            
+            
         } else {
             flash("fail", "Passwords dont match");
             return badRequest(addWarehouse.render(updateWarehouseForm, getUserFromSession()));

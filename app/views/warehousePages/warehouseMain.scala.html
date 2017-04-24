@@ -43,7 +43,9 @@
             </div>
             <!-- List containing nav links -->
             <ul class="nav navbar-nav">
-
+                <li @if(title == "Home"){class="active"}>
+                    <a href="@controllers.routes.HomeController.index()" class="active">Home</a>
+                </li>
                 <li @if(title == "Orders"){class="active"}>
                     <a href="@routes.WarehouseController.ordersW()">Orders</a>
                 </li>

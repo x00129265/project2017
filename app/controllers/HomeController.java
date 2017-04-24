@@ -98,7 +98,7 @@ public class HomeController extends Controller {
            activeItem = list.get(0);
         }
         for(int i = 1; i < list.size(); i++){
-                iList.add(list.get(i));
+            iList.add(list.get(i));
         }
 
 

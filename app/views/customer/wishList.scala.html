@@ -25,7 +25,8 @@
 				<th>Name</th>
 				<th>Description</th>
 				<th>Item Price</th>
-                               <th>Item Priority Price </th>
+                <th>Delete</th>
+                <th>Add to basket</th>               
 			</tr>
 			</thead>
 			<tbody>
@@ -36,18 +37,18 @@
                         <td>@i.getProduct.getName</td>
                         <td>@i.getProduct.getDescription()</td>
                         <td>&euro; @("%.2f".format(i.getPrice))</td>
-                        <td>&euro; @("%.2f".format(i.getItemTotal))</td>
-                        <td>@i.getQuantity()</td>
-                        <td><a href="@routes.WishlistCtrl.DeleteOne(i.getId)"><span class="glyphicon glyphicon-minus-sign"></span></a></td>
-                         <td><a href="@routes.ShoppingCtrl.addOne(i.getId)"><span class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></td>
+                        <td>
+                            <a href="@routes.WishlistCtrl.DeleteOne(i.getId)" class="btn-xs btn-danger"
+                            onclick="return confirmDel();">
+                            <span class="glyphicon glyphicon-trash"></span></a>
+                        </td>
+                         <td><a href="@routes.ShoppingCtrl.addToBasket(i.getProduct().getId)"><span class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></td>
+                         
                     </tr>
 
                     <div class="row">
             <div class="col-md-6">
-                <p class="text-right">
-                    <a href="@routes.WishlistCtrl.emptyWishlist(catId, filter)" class="btn btn-danger btn-sm" onclick="return confirmDel();">
-                    <span class="glyphicon glyphicon-trash"></span> Empty WishList</a>
-                </p>
+                
            			
                    
                 </p>
@@ -65,7 +66,10 @@
                 }
 			</tbody>
 		</table>
-    
+        <p class="text-right">
+                    <a href="@routes.WishlistCtrl.emptyWishlist(catId, filter)" class="btn btn-danger btn-sm" onclick="return confirmDel();">
+                    <span class="glyphicon glyphicon-trash"></span> Empty WishList</a>
+                </p>
         
     </div>
 </div>

@@ -56,6 +56,14 @@ public class ProductWarehouse extends Model{
                         .eq("warehouse.email", email)
                         .findList();
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     
     public Product getProduct() {
         return product;
@@ -86,7 +94,7 @@ public class ProductWarehouse extends Model{
     //     p.getLikes().add(this);
     // }
 
-    // public void removeWarehouse(Customer c){
+    // public void removeWarehouse(Warehouse w){
     //     cus.remove(c);
     //     c.getLikes().remove(this);   
     // }

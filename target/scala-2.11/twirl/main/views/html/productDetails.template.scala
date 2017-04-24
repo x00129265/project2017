@@ -54,15 +54,7 @@ Seq[Any](format.raw/*2.206*/("""
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								
-								  
-
-								  <!-- Controls -->
-								  <a class="left item-control" href="#similar-product" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								  </a>
-								  <a class="right item-control" href="#similar-product" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								  </a>
+								
 							</div>
 							
 
@@ -70,13 +62,13 @@ Seq[Any](format.raw/*2.206*/("""
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
 								
-								<h2>"""),_display_(/*40.14*/prod/*40.18*/.getName),format.raw/*40.26*/("""</h2>
+								<h2>"""),_display_(/*32.14*/prod/*32.18*/.getName),format.raw/*32.26*/("""</h2>
 								
 								
 								<span>
-									<span>€"""),_display_(/*44.18*/prod/*44.22*/.getPrice),format.raw/*44.31*/("""</span>
+									<span>€"""),_display_(/*36.18*/prod/*36.22*/.getPrice),format.raw/*36.31*/("""</span>
 									
-									<a href=""""),_display_(/*46.20*/routes/*46.26*/.ShoppingCtrl.addToBasket(prod.getId)),format.raw/*46.63*/("""" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+									<a href=""""),_display_(/*38.20*/routes/*38.26*/.ShoppingCtrl.addToBasket(prod.getId)),format.raw/*38.63*/("""" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 								</span>
 
 	
@@ -104,28 +96,28 @@ Seq[Any](format.raw/*2.206*/("""
 						<!--Comment section-->
 						<div class="tab-pane fade active in" id="reviews" >
 							<div class="col-sm-12">
-								"""),_display_(/*74.10*/for(c <- cList) yield /*74.25*/ {_display_(Seq[Any](format.raw/*74.27*/("""
-									"""),format.raw/*75.10*/("""<div class="product-information">
+								"""),_display_(/*66.10*/for(c <- cList) yield /*66.25*/ {_display_(Seq[Any](format.raw/*66.27*/("""
+									"""),format.raw/*67.10*/("""<div class="product-information">
 									<ul>
-										<li><a href=""><i class="fa fa-user"></i>"""),_display_(/*77.53*/c/*77.54*/.getCustomer().getfName()),format.raw/*77.79*/("""</a></li>
-										<li><a href=""><i class="fa fa-clock-o"></i>"""),_display_(/*78.56*/c/*78.57*/.getTime()),format.raw/*78.67*/("""</a></li>
-										<li><a href=""><i class="fa fa-calendar-o"></i>"""),_display_(/*79.59*/c/*79.60*/.getDate()),format.raw/*79.70*/("""</a></li>
+										<li><a href=""><i class="fa fa-user"></i>"""),_display_(/*69.53*/c/*69.54*/.getCustomer().getfName()),format.raw/*69.79*/("""</a></li>
+										<li><a href=""><i class="fa fa-clock-o"></i>"""),_display_(/*70.56*/c/*70.57*/.getTime()),format.raw/*70.67*/("""</a></li>
+										<li><a href=""><i class="fa fa-calendar-o"></i>"""),_display_(/*71.59*/c/*71.60*/.getDate()),format.raw/*71.70*/("""</a></li>
 									</ul>
-									<p> """),_display_(/*81.15*/c/*81.16*/.getContent),format.raw/*81.27*/("""</p>
+									<p> """),_display_(/*73.15*/c/*73.16*/.getContent),format.raw/*73.27*/("""</p>
 									</div>
-								""")))}),format.raw/*83.10*/("""
-								"""),_display_(/*84.10*/if(user.getRole == "customer")/*84.40*/{_display_(Seq[Any](format.raw/*84.41*/("""
-								"""),format.raw/*85.9*/("""<p><b>Write Your Review</b></p>
+								""")))}),format.raw/*75.10*/("""
+								"""),_display_(/*76.10*/if(user.getRole == "customer")/*76.40*/{_display_(Seq[Any](format.raw/*76.41*/("""
+								"""),format.raw/*77.9*/("""<p><b>Write Your Review</b></p>
 
 
 
-									"""),_display_(/*89.11*/form(action = routes.CustomerCtrl.comment(catId, filter, prod.getId()), 'class -> "form-horizontal", 'role -> "form")/*89.128*/ {_display_(Seq[Any](format.raw/*89.130*/("""
-									"""),_display_(/*90.11*/inputText(commentForm("content"), '_label -> "Write your comment here", 'class -> "form-control")),format.raw/*90.108*/("""
-										"""),format.raw/*91.11*/("""<input type="submit" value="Add comment" class="btn btn-default pull-right">
-									""")))}),format.raw/*92.11*/("""
-								""")))}),format.raw/*93.10*/("""	
+									"""),_display_(/*81.11*/form(action = routes.CustomerCtrl.comment(catId, filter, prod.getId()), 'class -> "form-horizontal", 'role -> "form")/*81.128*/ {_display_(Seq[Any](format.raw/*81.130*/("""
+									"""),_display_(/*82.11*/inputText(commentForm("content"), '_label -> "Write your comment here", 'class -> "form-control")),format.raw/*82.108*/("""
+										"""),format.raw/*83.11*/("""<input type="submit" value="Add comment" class="btn btn-default pull-right">
+									""")))}),format.raw/*84.11*/("""
+								""")))}),format.raw/*85.10*/("""	
 
-							"""),format.raw/*95.8*/("""</div>
+							"""),format.raw/*87.8*/("""</div>
 						</div>
 						<!--End comment section-->
 <!--====================== J.T. end =====================-->
@@ -153,11 +145,11 @@ Seq[Any](format.raw/*2.206*/("""
 object productDetails extends productDetails_Scope0.productDetails_Scope1.productDetails
               /*
                   -- GENERATED --
-                  DATE: Mon Apr 24 10:27:29 IST 2017
+                  DATE: Mon Apr 24 19:32:02 IST 2017
                   SOURCE: /home/wdd/webapps/project2017/app/views/productDetails.scala.html
-                  HASH: 0d911df41372ce49261ce1fc35db7e9864ce1785
-                  MATRIX: 947->18|1247->222|1274->224|1338->280|1377->282|1408->287|1477->331|1517->363|1555->364|1589->372|1656->414|1669->419|1704->434|1738->442|1781->456|1815->464|1853->493|1892->494|1927->502|1994->543|2008->548|2041->560|2076->568|2120->582|2148->583|2406->814|2439->826|3067->1427|3080->1431|3109->1439|3192->1495|3205->1499|3235->1508|3299->1545|3314->1551|3372->1588|4351->2540|4382->2555|4422->2557|4460->2567|4587->2667|4597->2668|4643->2693|4735->2758|4745->2759|4776->2769|4871->2837|4881->2838|4912->2848|4978->2887|4988->2888|5020->2899|5081->2929|5118->2939|5157->2969|5196->2970|5232->2979|5304->3024|5431->3141|5472->3143|5510->3154|5629->3251|5668->3262|5786->3349|5827->3359|5864->3369
-                  LINES: 30->2|35->2|36->3|36->3|36->3|37->4|38->5|38->5|38->5|39->6|40->7|40->7|40->7|41->8|42->9|43->10|43->10|43->10|44->11|45->12|45->12|45->12|46->13|47->14|48->15|52->19|52->19|73->40|73->40|73->40|77->44|77->44|77->44|79->46|79->46|79->46|107->74|107->74|107->74|108->75|110->77|110->77|110->77|111->78|111->78|111->78|112->79|112->79|112->79|114->81|114->81|114->81|116->83|117->84|117->84|117->84|118->85|122->89|122->89|122->89|123->90|123->90|124->91|125->92|126->93|128->95
+                  HASH: aab6e57ac64c1ba2c367dd4d456eb9db8cd57357
+                  MATRIX: 947->18|1247->222|1274->224|1338->280|1377->282|1408->287|1477->331|1517->363|1555->364|1589->372|1656->414|1669->419|1704->434|1738->442|1781->456|1815->464|1853->493|1892->494|1927->502|1994->543|2008->548|2041->560|2076->568|2120->582|2148->583|2406->814|2439->826|2756->1116|2769->1120|2798->1128|2881->1184|2894->1188|2924->1197|2988->1234|3003->1240|3061->1277|4040->2229|4071->2244|4111->2246|4149->2256|4276->2356|4286->2357|4332->2382|4424->2447|4434->2448|4465->2458|4560->2526|4570->2527|4601->2537|4667->2576|4677->2577|4709->2588|4770->2618|4807->2628|4846->2658|4885->2659|4921->2668|4993->2713|5120->2830|5161->2832|5199->2843|5318->2940|5357->2951|5475->3038|5516->3048|5553->3058
+                  LINES: 30->2|35->2|36->3|36->3|36->3|37->4|38->5|38->5|38->5|39->6|40->7|40->7|40->7|41->8|42->9|43->10|43->10|43->10|44->11|45->12|45->12|45->12|46->13|47->14|48->15|52->19|52->19|65->32|65->32|65->32|69->36|69->36|69->36|71->38|71->38|71->38|99->66|99->66|99->66|100->67|102->69|102->69|102->69|103->70|103->70|103->70|104->71|104->71|104->71|106->73|106->73|106->73|108->75|109->76|109->76|109->76|110->77|114->81|114->81|114->81|115->82|115->82|116->83|117->84|118->85|120->87
                   -- GENERATED --
               */
           

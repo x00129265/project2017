@@ -1,6 +1,12 @@
 package controllers.security;
 
+import play.api.Environment;
 import play.mvc.*;
+import play.data.*;
+import play.db.ebean.Transactional;
+
+import play.mvc.*;
+import views.html.*;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.CompletableFuture;
 
@@ -29,6 +35,10 @@ public class CheckIfCustomer extends Action.Simple {
 
                 // User admin sp continue with the http request
                 return delegate.call(ctx);
+            } else {
+                // flash("fail", "You need to be logged in as a customer to access this method");
+                ctx.flash().put("fail", "You need to be logged in as a customer to access this method.");
+                return CompletableFuture.completedFuture(redirect(controllers.routes.HomeController.index(0, "")));
             }
         }
         //Result unauthorized = Results.unauthorized("unauthorized");

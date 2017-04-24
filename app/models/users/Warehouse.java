@@ -147,5 +147,15 @@ public class Warehouse extends User {
         this.productWarehouses = productWarehouses;
     }
 
+	public void removeProductWarehouse(ProductWarehouse pW){
+        productWarehouses.remove(pW);
+        pW.getProduct().getProductWarehouses().remove(pW);   
+    }
+
+	public void addProductWarehouse(ProductWarehouse pW){
+        productWarehouses.add(pW);
+        pW.getProduct().getProductWarehouses().add(pW);
+    }
+
 
 }

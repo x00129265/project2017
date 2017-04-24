@@ -94,7 +94,7 @@ Seq[Any](format.raw/*3.78*/("""
 object updateIndexSlider extends updateIndexSlider_Scope0.updateIndexSlider_Scope1.updateIndexSlider
               /*
                   -- GENERATED --
-                  DATE: Mon Apr 24 10:27:30 IST 2017
+                  DATE: Mon Apr 24 19:32:03 IST 2017
                   SOURCE: /home/wdd/webapps/project2017/app/views/admin/indexSlider/updateIndexSlider.scala.html
                   HASH: ae2df8e62e69e575b4a1a3ecea0d3ecd9a210e16
                   MATRIX: 913->45|1084->121|1113->125|1125->130|1175->172|1214->174|1241->175|1363->272|1403->304|1441->305|1476->313|1544->355|1558->360|1594->375|1629->383|1673->397|1707->405|1745->434|1784->435|1819->443|1886->484|1900->489|1933->501|1968->509|2012->523|2042->527|2196->671|2237->673|2271->681|2373->762|2403->766|2506->848|2543->858|2643->937|2680->947|2783->1029|2813->1032|3116->1308|3131->1314|3185->1347|3292->1424|3320->1425|3381->1456|3409->1457

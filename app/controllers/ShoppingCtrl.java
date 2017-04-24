@@ -55,7 +55,8 @@ public class ShoppingCtrl extends Controller {
 
         return ok(basket.render(getCurrentCustomer(), User.getUserById(session().get("email")), categoriesList, cat, filters) );
     }
-
+//J.T end-----------------------------------------------------------------    
+//J.J and J.T start-------------------------------------------------------------
 @Transactional
     public Result addToBasket(Long id, Long cat, String filters) {
         
@@ -109,6 +110,21 @@ public class ShoppingCtrl extends Controller {
         return ok(basket.render(c, User.getUserById(session().get("email")), categoriesList, cat, filters));
     }
 
+
+
+    // Empty Basket
+    @Transactional
+    public Result emptyBasket(Long cat, String filters) {
+        
+        Customer c = getCurrentCustomer();
+        c.getBasket().removeAllItems();
+        c.getBasket().update();
+        
+        return ok(basket.render(c, User.getUserById(session().get("email")), categoriesList, cat, filters));
+         
+    }
+//J.J. and J.T end------------------------------------------   
+//J.T start-----------------------------------------------
     public Result placeOrder(Long cat, String filters){
 
 
@@ -223,20 +239,7 @@ public class ShoppingCtrl extends Controller {
 
         // Show order confirmed view Order
         return ok(orderConfirmed.render(c, User.getUserById(session().get("email")), categoriesList, order, cat, filters));
-    }
-
-    // Empty Basket
-    @Transactional
-    public Result emptyBasket(Long cat, String filters) {
-        
-        Customer c = getCurrentCustomer();
-        c.getBasket().removeAllItems();
-        c.getBasket().update();
-        
-        return ok(basket.render(c, User.getUserById(session().get("email")), categoriesList, cat, filters));
-         
-    }
-
+    }    
 
     
     // View an individual order

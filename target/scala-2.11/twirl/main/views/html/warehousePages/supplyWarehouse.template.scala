@@ -86,7 +86,7 @@ Seq[Any](format.raw/*5.106*/("""
 object supplyWarehouse extends supplyWarehouse_Scope0.supplyWarehouse_Scope1.supplyWarehouse
               /*
                   -- GENERATED --
-                  DATE: Mon Apr 24 10:27:30 IST 2017
+                  DATE: Mon Apr 24 19:32:03 IST 2017
                   SOURCE: /home/wdd/webapps/project2017/app/views/warehousePages/supplyWarehouse.scala.html
                   HASH: 389de23e6c8fdd5a6aa4365fd88affb2ad800e14
                   MATRIX: 979->100|1179->204|1206->206|1228->220|1276->260|1315->262|1343->264|1478->373|1634->519|1675->521|1708->528|1851->651|1882->656|2013->765|2045->770|2145->843|2160->849|2213->881|2319->960|2334->966|2387->998|2490->1071|2518->1072|2579->1103|2607->1104

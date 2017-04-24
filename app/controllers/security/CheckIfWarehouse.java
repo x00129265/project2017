@@ -32,6 +32,10 @@ public class CheckIfWarehouse extends Action.Simple {
 
                 // User admin sp continue with the http request
                 return delegate.call(ctx);
+            } else {
+                // flash("fail", "You need to be logged in as a customer to access this method");
+                ctx.flash().put("fail", "You need to be logged in as a warehouse to access this method.");
+                return CompletableFuture.completedFuture(redirect(controllers.routes.HomeController.index(0, "")));
             }
         }
         ctx.flash().put("error", "Warehouse Login Required.");

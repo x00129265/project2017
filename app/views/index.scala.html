@@ -36,7 +36,7 @@
 							
 								<div class="pushDown item">
 									<div class="col-sm-6">
-										<h1><span>@activeI.getHeading</span></h1>
+										<h1><span>@i.getHeading</span></h1>
 										<h2>@i.getHeading2</h2>
 										<p>@i.getContent</p>
 										<a href="@(i.getPostLink)" <button type="button" class="btn btn-default">More</button></a>
@@ -100,9 +100,11 @@
                                     <div class="overlay-content">
                                         <h2>&euro; @("%.2f".format(p.getPrice))</h2>
                                         <a   href="@routes.HomeController.productDetails(catId, filter, p.getId)" <p> @p.getDescription</p> </a>
-										@if(user.getRole == "customer"){
-                                        <a href="@routes.ShoppingCtrl.addToBasket(p.getId)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										}
+										@if(user != null) {
+											@if(user.getRole == "customer"){
+											<a href="@routes.ShoppingCtrl.addToBasket(p.getId)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											}
+										}	
 									</div>
                                 </div>
                             </div>
@@ -110,10 +112,12 @@
                             <div class="choose">
 								
 								<ul class="nav nav-pills nav-justified">
-									@if(user.getRole == "customer"){
-                                    <li><a href="@routes.HomeController.like(catId, filter, p.getId, "index")"><b><i class="glyphicon glyphicon-thumbs-up"></i>Like @p.getPlike().getLikeCount() </a></b></li>
-                                    <li><a href="#"><b><i class="fa fa-plus-square"></i>Add to wishlist</a></b></li>  
-									}
+									@if(user != null) {
+										@if(user.getRole == "customer"){
+										<li><a href="@routes.HomeController.like(catId, filter, p.getId, "index")"><b><i class="glyphicon glyphicon-thumbs-up"></i>Like @p.getPlike().getLikeCount() </a></b></li>
+										<li><a href="@routes.WishlistCtrl.addToWishlist(p.getId)"><b><i class="fa fa-plus-square"></i>Add to wishlist</a></b></li>  
+										}
+									}	
                                 </ul>
 								
                             </div>

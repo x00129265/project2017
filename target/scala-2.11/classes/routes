@@ -19,7 +19,9 @@ GET     /aboutUs                controllers.HomeController.aboutUs(cat:Long ?= 0
 # Customer
 ################################################################################
 GET     /profile                        controllers.CustomerCtrl.profile(cat:Long ?= 0, filter?="")
-GET	    /profileEdit			        controllers.CustomerCtrl.profileEdit(cat:Long ?= 0, filter?="")
+GET     /profileEdit                    controllers.CustomerCtrl.profileEdit(cat:Long ?= 0, filter?="")
+POST 	/profileSubmit			        controllers.CustomerCtrl.profileSubmit(cat:Long ?= 0, filter?="")
+
 GET	    /orderHistory			        controllers.CustomerCtrl.orderHistory(cat:Long ?= 0, filter?="")
 GET     /cancelOrder/:id                controllers.CustomerCtrl.cancelOrder(cat:Long ?= 0, filter?="", id: Long)			
 

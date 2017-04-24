@@ -105,8 +105,8 @@ private Plike lds2;
                         // In this case search the ManyToMany relation
                         .eq("categories.id", catID)
                         // name like filter value (surrounded by wildcards)
-                        .ilike("name", "%" + filter + "%")
-                        .orderBy("name asc")
+                        .ilike("name", "% " + filter + " %")
+                        .orderBy("id desc")
                         .findList();
     }
 
@@ -118,7 +118,7 @@ private Plike lds2;
                         // name like filter value (surrounded by wildcards)
                         .ilike("name", "%" + filter + "%")
                         .ne("stock", 0)
-                        .orderBy("name asc")
+                        .orderBy("id desc")
                         .findList();
     }
 
