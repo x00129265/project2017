@@ -34,6 +34,7 @@ import views.html.admin.warehouse.*;
 import models.*;
 import models.users.Warehouse;
 import models.users.User;
+import models.users.Customer;
 import models.shopping.*;
 import models.productsAdditions.*;
 
@@ -367,14 +368,20 @@ public class AdminController extends Controller {
         Plike like = Plike.findByProduct(id);
         List<Comment> comments = Comment.findByProduct(id);
 
-        
-        // //Remove all user likes
-        for(int i = 0; i < like.getCustomer().size(); i++){
-            like.getCustomer().get(i).removePlike(like);
-            like.getCustomer().get(i).update();
-            like.update();
+        List<User> usersThatAreCustomers = User.findAllCustomers();
+        List<Customer> customers = new ArrayList<>();
+        for(int i = 0; i < usersThatAreCustomers.size(); i++){
+            customers.add((Customer) usersThatAreCustomers.get(i));
         }
-        like.setCustomers(null);
+        // //Remove all user likes
+        for(int i = 0; i < customers.size(); i++){
+            for(int j = 0; j < customers.get(i).getLikes().size(); j++){
+                if(customers.get(i).getLikes().get(j).getLikeId() == like.getLikeId()){
+                customers.get(i).getLikes().get(j).removeCustomer(customers.get(i));
+                customers.get(i).update();
+                }
+            }    
+        }
         like.delete();
         
         //Delete product and its attributes (Like and comments)
@@ -646,6 +653,7 @@ public class AdminController extends Controller {
             return redirect(routes.AdminController.updateWarehouse(email));
             }
         }
+        boolean status = Warehouse.findWarehouseByEmail(email).isMain();
        
         Warehouse.find.ref(email).delete();
         if(updateWarehouseForm.hasErrors()){
@@ -660,7 +668,7 @@ public class AdminController extends Controller {
 
         if (w.getPassword().equals(w.getPassword2())){
             flash("success", "Warehouse has been updated");
-            
+            w.setMain(status);
             w.save();
         } else {
             flash("fail", "Passwords dont match");

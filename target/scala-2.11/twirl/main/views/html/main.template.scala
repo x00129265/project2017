@@ -82,8 +82,8 @@ Seq[Any](format.raw/*3.121*/("""
                <div class="col-sm-5">
                   <div class="contactinfo">
                      <ul class="nav nav-pills">
-                        <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                        <li><a href="#"><i class="fa fa-envelope"></i> info.com</a></li>
+                        <li><a href="#"><i class="fa fa-phone"></i> +353 8533 3333</a></li>
+                        <li><a href="#"><i class="fa fa-envelope"></i> aAndJs&#64;gmail.com</a></li>
                      </ul>
                   </div>
                </div>
@@ -93,7 +93,7 @@ Seq[Any](format.raw/*3.121*/("""
                            """),_display_(/*61.29*/if(user != null)/*61.45*/ {_display_(Seq[Any](format.raw/*61.47*/("""
                                """),_display_(/*62.33*/if(user.getRole == "customer")/*62.63*/{_display_(Seq[Any](format.raw/*62.64*/("""
                            """),format.raw/*63.28*/("""<li><a href=""""),_display_(/*63.42*/routes/*63.48*/.CustomerCtrl.profile(catId, filter)),format.raw/*63.84*/(""""><i class="fa fa-user"></i> Account</a></li>
-                           <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+                           <li><a href=""""),_display_(/*64.42*/routes/*64.48*/.WishlistCtrl.showWishlist(catId, filter)),format.raw/*64.89*/(""""><i class="fa fa-star"></i> Wishlist</a></li>
                            <li><a href=""""),_display_(/*65.42*/routes/*65.48*/.ShoppingCtrl.showBasket(catId, filter)),format.raw/*65.87*/(""""><i class="fa fa-shopping-cart"></i> Cart</a></li>""")))}),format.raw/*65.139*/("""
                            """),format.raw/*66.28*/("""<li """),_display_(/*66.33*/if(title == "Login")/*66.53*/{_display_(Seq[Any](format.raw/*66.54*/("""class="active"""")))}),format.raw/*66.69*/(""">  
                                <a href=""""),_display_(/*67.42*/controllers/*67.53*/.routes.LoginController.logout()),format.raw/*67.85*/("""">Logout """),_display_(/*67.95*/user/*67.99*/.getfName()),format.raw/*67.110*/("""</a>
@@ -117,12 +117,17 @@ Seq[Any](format.raw/*3.121*/("""
                      <a href="index.html"><img src="images/home/logo.png" alt="" /></a>
                   </div>
                </div>-->
-               <div class="col-sm-12">
+               <div class="col-sm-6">
+                     <h1><font size="10"><b>A <small>&</small> Js</b></font></h1>  
+               </div>
+               <div class="col-sm-6">
+                   <h3><p> </p></h3>
+                   
                        <!-- Search Form -->
                   <div class="pull-right">
                       <div id="actions">
-                          <form action=""""),_display_(/*92.42*/routes/*92.48*/.HomeController.products(catId)),format.raw/*92.79*/("""" method="GET">
-                              <input type="search" id="searchbox" name="filter" value=""""),_display_(/*93.89*/filter),format.raw/*93.95*/("""" placeholder="">
+                          <form action=""""),_display_(/*97.42*/routes/*97.48*/.HomeController.products(catId)),format.raw/*97.79*/("""" method="GET">
+                              <input type="search" id="searchbox" name="filter" value=""""),_display_(/*98.89*/filter),format.raw/*98.95*/("""" placeholder="">
                               <input type="submit" id="searchsubmit" value="Search" class="btn btn-default">
 
                           </form>
@@ -147,20 +152,10 @@ Seq[Any](format.raw/*3.121*/("""
                   </div>
                   <div class="mainmenu pull-left">
                      <ul class="nav navbar-nav collapse navbar-collapse">
-                        <li><a href=""""),_display_(/*118.39*/controllers/*118.50*/.routes.HomeController.index()),format.raw/*118.80*/("""" class="active">Home</a></li>
-                        <!--<li><a href="404.html">New in</a></li>
-                        <li class="dropdown"><a href="#">Woman<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Product1</a></li>
-                                    </ul>
-                                </li> 
-                        <li class="dropdown"><a href="#">Men<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Product1</a></li>
-                                    </ul>
-                                </li> 
-                        <li><a href="">Kids</a></li>
-                        <li><a href="">Accessories</a></li>-->
+                        <li><a href=""""),_display_(/*123.39*/controllers/*123.50*/.routes.HomeController.index()),format.raw/*123.80*/("""" class="active">Home</a></li>
+                        <li><a href=""""),_display_(/*124.39*/routes/*124.45*/.HomeController.products()),format.raw/*124.71*/("""">Products</a></li>
+                        <li><a href=""""),_display_(/*125.39*/routes/*125.45*/.HomeController.aboutUs()),format.raw/*125.70*/("""">About Us</a></li>
+                        
                      </ul>
                   </div>
                </div>
@@ -177,7 +172,7 @@ Seq[Any](format.raw/*3.121*/("""
          <div class="row">
             <div class="col-sm-3">
                <div class="left-sidebar">
-                  <a href=""""),_display_(/*148.29*/routes/*148.35*/.HomeController.products(0)),format.raw/*148.62*/(""""></a><h2>Category</h2></a>
+                  <a href=""""),_display_(/*143.29*/routes/*143.35*/.HomeController.products(0)),format.raw/*143.62*/(""""></a><h2>Category</h2></a>
                   <div class="panel-group category-products" id="accordian"><!--category-productsr-->
                      <div class="panel panel-default">
                         <div class="list-group">
@@ -189,11 +184,11 @@ Seq[Any](format.raw/*3.121*/("""
                            <div class="panel panel-default">
                               <div class="panel-heading">
                                  <h4 class="panel-title">
-                              """),_display_(/*160.32*/for(c <- categories) yield /*160.52*/ {_display_(Seq[Any](format.raw/*160.54*/("""
-                                 """),format.raw/*161.34*/("""<a href=""""),_display_(/*161.44*/routes/*161.50*/.HomeController.products(c.getId)),format.raw/*161.83*/("""" class="list-group-item">"""),_display_(/*161.110*/c/*161.111*/.getName),format.raw/*161.119*/("""
-                                 """),format.raw/*162.34*/("""</a>
-                              """)))}),format.raw/*163.32*/("""
-                                 """),format.raw/*164.34*/("""</h4>
+                              """),_display_(/*155.32*/for(c <- categories) yield /*155.52*/ {_display_(Seq[Any](format.raw/*155.54*/("""
+                                 """),format.raw/*156.34*/("""<a href=""""),_display_(/*156.44*/routes/*156.50*/.HomeController.products(c.getId)),format.raw/*156.83*/("""" class="list-group-item">"""),_display_(/*156.110*/c/*156.111*/.getName),format.raw/*156.119*/("""
+                                 """),format.raw/*157.34*/("""</a>
+                              """)))}),format.raw/*158.32*/("""
+                                 """),format.raw/*159.34*/("""</h4>
                               </div>
                            </div>
                         </div>
@@ -247,147 +242,46 @@ Seq[Any](format.raw/*3.121*/("""
             <div class="col-sm-9 padding-right">
                
  
-               """),_display_(/*218.17*/content),format.raw/*218.24*/("""
+               """),_display_(/*213.17*/content),format.raw/*213.24*/("""
      
             
-            """),format.raw/*221.13*/("""</div>
+            """),format.raw/*216.13*/("""</div>
          </div>
       </div>
    </section>
    
-   <footer id="footer"><!--Footer-->
+
+      <footer id="footer"><!--Footer-->
       <div class="footer-top">
          <div class="container">
             <div class="row">
                <div class="col-sm-2">
                   <div class="companyinfo">
                      <h2><span>A</span>&<span>Js</span></h2>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
+                     <p>Welcome to A and Js online shop</p>
                   </div>
                </div>
                <div class="col-sm-7">
-                  <div class="col-sm-3">
-                     <div class="video-gallery text-center">
-                        <a href="#">
-                           <div class="iframe-img">
-                              <img src="images/home/iframe1.png" alt="" />
-                           </div>
-                           <div class="overlay-icon">
-                              <i class="fa fa-play-circle-o"></i>
-                           </div>
-                        </a>
-                        <p>Circle of Hands</p>
-                        <h2>24 DEC 2014</h2>
-                     </div>
+
+                  <div class="col-sm-1">
+                     
+                  </div> 
+                  <div class="col-sm-5">
+                     <div class="single-widget">
+                     <h2>Contack us</h2>
+                     <ul class="nav nav-pills nav-stacked">
+                        <li>Phone: +353 8533 3333</li>
+                        <li>Email: aAndJs&#64;gmail.com</li>
+                        <li>Facebook: AandJs</li>
+                        <li>Address: 32 crumlin road, Crumlin</li>
+                     </ul>
+                  </div>
                   </div>
                   
-                  <div class="col-sm-3">
-                     <div class="video-gallery text-center">
-                        <a href="#">
-                           <div class="iframe-img">
-                              <img src="images/home/iframe2.png" alt="" />
-                           </div>
-                           <div class="overlay-icon">
-                              <i class="fa fa-play-circle-o"></i>
-                           </div>
-                        </a>
-                        <p>Circle of Hands</p>
-                        <h2>24 DEC 2014</h2>
-                     </div>
-                  </div>
                   
-                  <div class="col-sm-3">
-                     <div class="video-gallery text-center">
-                        <a href="#">
-                           <div class="iframe-img">
-                              <img src="images/home/iframe3.png" alt="" />
-                           </div>
-                           <div class="overlay-icon">
-                              <i class="fa fa-play-circle-o"></i>
-                           </div>
-                        </a>
-                        <p>Circle of Hands</p>
-                        <h2>24 DEC 2014</h2>
-                     </div>
-                  </div>
                   
-                  <div class="col-sm-3">
-                     <div class="video-gallery text-center">
-                        <a href="#">
-                           <div class="iframe-img">
-                              <img src="images/home/iframe4.png" alt="" />
-                           </div>
-                           <div class="overlay-icon">
-                              <i class="fa fa-play-circle-o"></i>
-                           </div>
-                        </a>
-                        <p>Circle of Hands</p>
-                        <h2>24 DEC 2014</h2>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-3">
-                  <div class="address">
-                     <img src="images/home/map.png" alt="" />
-                     <p>Dublin, Ireland</p>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      
-      <div class="footer-widget">
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-2">
-                  <div class="single-widget">
-                     <h2>Service</h2>
-                     <ul class="nav nav-pills nav-stacked">
-                        <li><a href="#">Online Help</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Order Status</a></li>
-                        <li><a href="#">Change Location</a></li>
-                        <li><a href="#">FAQ’s</a></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="single-widget">
-                     <h2>Quock Shop</h2>
-                     <ul class="nav nav-pills nav-stacked">
-                        <li><a href="#">T-Shirt</a></li>
-                        <li><a href="#">Mens</a></li>
-                        <li><a href="#">Womens</a></li>
-                        <li><a href="#">Gift Cards</a></li>
-                        <li><a href="#">Shoes</a></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="single-widget">
-                     <h2>Policies</h2>
-                     <ul class="nav nav-pills nav-stacked">
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Privecy Policy</a></li>
-                        <li><a href="#">Refund Policy</a></li>
-                        <li><a href="#">Billing System</a></li>
-                        <li><a href="#">Ticket System</a></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="single-widget">
-                     <h2>About Shopper</h2>
-                     <ul class="nav nav-pills nav-stacked">
-                        <li><a href="#">Company Information</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Store Location</a></li>
-                        <li><a href="#">Affillate Program</a></li>
-                        <li><a href="#">Copyright</a></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-sm-3 col-sm-offset-1">
+                  
+                  <div class="col-sm-6">
                   <div class="single-widget">
                      <h2>About Shopper</h2>
                      <form action="#" class="searchform">
@@ -396,11 +290,19 @@ Seq[Any](format.raw/*3.121*/("""
                         <p>Get the most recent updates from <br />our site and be updated your self...</p>
                      </form>
                   </div>
+                </div>
                </div>
-               
+               <div class="col-sm-3">
+                  <div class="address">
+                     <img src="/assets/images/home/dublin.jpg" alt="" />
+                     <p>Dublin, Ireland</p>
+                  </div>
+               </div>
             </div>
          </div>
       </div>
+      
+      
       
       <div class="footer-bottom">
          <div class="container">
@@ -421,12 +323,12 @@ Seq[Any](format.raw/*3.121*/("""
         
         
 
-   <script src=""""),_display_(/*392.18*/routes/*392.24*/.Assets.versioned("javascripts/jquery.js")),format.raw/*392.66*/("""" type="text/javascript"></script>
-   <script src=""""),_display_(/*393.18*/routes/*393.24*/.Assets.versioned("javascripts/bootstrap.min.js")),format.raw/*393.73*/("""" type="text/javascript"></script>
-   <script src=""""),_display_(/*394.18*/routes/*394.24*/.Assets.versioned("javascripts/jquery.scrollUp.min.js")),format.raw/*394.79*/("""" type="text/javascript"></script>
-   <script src=""""),_display_(/*395.18*/routes/*395.24*/.Assets.versioned("javascripts/price-range.js")),format.raw/*395.71*/("""" type="text/javascript"></script>
-   <script src=""""),_display_(/*396.18*/routes/*396.24*/.Assets.versioned("javascripts/jquery.prettyPhoto.js")),format.raw/*396.78*/("""" type="text/javascript"></script>
-   <script src=""""),_display_(/*397.18*/routes/*397.24*/.Assets.versioned("javascripts/main.js")),format.raw/*397.64*/("""" type="text/javascript"></script>
+   <script src=""""),_display_(/*294.18*/routes/*294.24*/.Assets.versioned("javascripts/jquery.js")),format.raw/*294.66*/("""" type="text/javascript"></script>
+   <script src=""""),_display_(/*295.18*/routes/*295.24*/.Assets.versioned("javascripts/bootstrap.min.js")),format.raw/*295.73*/("""" type="text/javascript"></script>
+   <script src=""""),_display_(/*296.18*/routes/*296.24*/.Assets.versioned("javascripts/jquery.scrollUp.min.js")),format.raw/*296.79*/("""" type="text/javascript"></script>
+   <script src=""""),_display_(/*297.18*/routes/*297.24*/.Assets.versioned("javascripts/price-range.js")),format.raw/*297.71*/("""" type="text/javascript"></script>
+   <script src=""""),_display_(/*298.18*/routes/*298.24*/.Assets.versioned("javascripts/jquery.prettyPhoto.js")),format.raw/*298.78*/("""" type="text/javascript"></script>
+   <script src=""""),_display_(/*299.18*/routes/*299.24*/.Assets.versioned("javascripts/main.js")),format.raw/*299.64*/("""" type="text/javascript"></script>
 
     </body>
 </html>
@@ -451,11 +353,11 @@ Seq[Any](format.raw/*3.121*/("""
 object main extends main_Scope0.main_Scope1.main
               /*
                   -- GENERATED --
-                  DATE: Sat Apr 22 13:49:21 IST 2017
-                  SOURCE: /home/wdd/webapps/integrated-11-04-17/app/views/main.scala.html
-                  HASH: 4bad3779498b3d11d4cc25e8f8c7e82a832d4c44
-                  MATRIX: 890->66|1105->185|1133->187|1212->292|1247->301|1281->309|1306->314|1395->376|1410->382|1473->423|1568->491|1583->497|1648->541|1743->609|1758->615|1830->665|1926->734|1941->740|2016->793|2111->861|2126->867|2196->915|2291->983|2306->989|2376->1037|2471->1105|2486->1111|2555->1158|2660->1236|2675->1242|2736->1281|2788->1306|2803->1312|2865->1353|2944->1405|2959->1411|3029->1460|3108->1512|3123->1518|3187->1561|3266->1613|3281->1619|3343->1660|3422->1712|3437->1718|3499->1759|3578->1811|3593->1817|3659->1862|3738->1914|3753->1920|3816->1962|3895->2014|3910->2020|3985->2074|4064->2126|4079->2132|4155->2187|4234->2239|4249->2245|4317->2292|4473->2421|4488->2427|4578->2495|4608->2496|4705->2566|4720->2572|4810->2640|4840->2641|4935->2709|4950->2715|5039->2782|5069->2783|5150->2837|5165->2843|5253->2910|5282->2911|5402->3093|5438->3102|6167->3804|6192->3820|6232->3822|6292->3855|6331->3885|6370->3886|6426->3914|6467->3928|6482->3934|6539->3970|6741->4145|6756->4151|6816->4190|6900->4242|6956->4270|6988->4275|7017->4295|7056->4296|7102->4311|7174->4356|7194->4367|7247->4399|7284->4409|7297->4413|7330->4424|7382->4458|7395->4463|7434->4464|7494->4496|7531->4506|7551->4517|7603->4548|7703->4617|7760->4646|8498->5357|8513->5363|8565->5394|8696->5498|8723->5504|9838->6591|9859->6602|9911->6632|11170->7863|11186->7869|11235->7896|11966->8599|12003->8619|12044->8621|12107->8655|12145->8665|12161->8671|12216->8704|12272->8731|12284->8732|12315->8740|12378->8774|12446->8810|12509->8844|14988->11295|15017->11302|15078->11334|21951->18179|21967->18185|22031->18227|22111->18279|22127->18285|22198->18334|22278->18386|22294->18392|22371->18447|22451->18499|22467->18505|22536->18552|22616->18604|22632->18610|22708->18664|22788->18716|22804->18722|22866->18762
-                  LINES: 31->3|36->3|38->5|41->8|42->9|42->9|42->9|43->10|43->10|43->10|44->11|44->11|44->11|45->12|45->12|45->12|46->13|46->13|46->13|47->14|47->14|47->14|48->15|48->15|48->15|49->16|49->16|49->16|50->17|50->17|50->17|51->18|51->18|51->18|52->19|52->19|52->19|53->20|53->20|53->20|54->21|54->21|54->21|55->22|55->22|55->22|56->23|56->23|56->23|57->24|57->24|57->24|58->25|58->25|58->25|59->26|59->26|59->26|60->27|60->27|60->27|62->29|62->29|62->29|62->29|63->30|63->30|63->30|63->30|64->31|64->31|64->31|64->31|65->32|65->32|65->32|65->32|75->43|78->46|93->61|93->61|93->61|94->62|94->62|94->62|95->63|95->63|95->63|95->63|97->65|97->65|97->65|97->65|98->66|98->66|98->66|98->66|98->66|99->67|99->67|99->67|99->67|99->67|99->67|100->68|100->68|100->68|101->69|101->69|101->69|101->69|102->70|104->72|124->92|124->92|124->92|125->93|125->93|150->118|150->118|150->118|180->148|180->148|180->148|192->160|192->160|192->160|193->161|193->161|193->161|193->161|193->161|193->161|193->161|194->162|195->163|196->164|250->218|250->218|253->221|424->392|424->392|424->392|425->393|425->393|425->393|426->394|426->394|426->394|427->395|427->395|427->395|428->396|428->396|428->396|429->397|429->397|429->397
+                  DATE: Mon Apr 24 11:33:47 IST 2017
+                  SOURCE: /home/wdd/webapps/project2017/app/views/main.scala.html
+                  HASH: f97c72767356e39e9806331896f4b414bf47efa6
+                  MATRIX: 890->66|1105->185|1133->187|1212->292|1247->301|1281->309|1306->314|1395->376|1410->382|1473->423|1568->491|1583->497|1648->541|1743->609|1758->615|1830->665|1926->734|1941->740|2016->793|2111->861|2126->867|2196->915|2291->983|2306->989|2376->1037|2471->1105|2486->1111|2555->1158|2660->1236|2675->1242|2736->1281|2788->1306|2803->1312|2865->1353|2944->1405|2959->1411|3029->1460|3108->1512|3123->1518|3187->1561|3266->1613|3281->1619|3343->1660|3422->1712|3437->1718|3499->1759|3578->1811|3593->1817|3659->1862|3738->1914|3753->1920|3816->1962|3895->2014|3910->2020|3985->2074|4064->2126|4079->2132|4155->2187|4234->2239|4249->2245|4317->2292|4473->2421|4488->2427|4578->2495|4608->2496|4705->2566|4720->2572|4810->2640|4840->2641|4935->2709|4950->2715|5039->2782|5069->2783|5150->2837|5165->2843|5253->2910|5282->2911|5402->3093|5438->3102|6178->3815|6203->3831|6243->3833|6303->3866|6342->3896|6381->3897|6437->3925|6478->3939|6493->3945|6550->3981|6664->4068|6679->4074|6741->4115|6856->4203|6871->4209|6931->4248|7015->4300|7071->4328|7103->4333|7132->4353|7171->4354|7217->4369|7289->4414|7309->4425|7362->4457|7399->4467|7412->4471|7445->4482|7497->4516|7510->4521|7549->4522|7609->4554|7646->4564|7666->4575|7718->4606|7818->4675|7875->4704|8813->5615|8828->5621|8880->5652|9011->5756|9038->5762|10153->6849|10174->6860|10226->6890|10323->6959|10339->6965|10387->6991|10473->7049|10489->7055|10536->7080|10964->7480|10980->7486|11029->7513|11760->8216|11797->8236|11838->8238|11901->8272|11939->8282|11955->8288|12010->8321|12066->8348|12078->8349|12109->8357|12172->8391|12240->8427|12303->8461|14782->10912|14811->10919|14872->10951|17394->13445|17410->13451|17474->13493|17554->13545|17570->13551|17641->13600|17721->13652|17737->13658|17814->13713|17894->13765|17910->13771|17979->13818|18059->13870|18075->13876|18151->13930|18231->13982|18247->13988|18309->14028
+                  LINES: 31->3|36->3|38->5|41->8|42->9|42->9|42->9|43->10|43->10|43->10|44->11|44->11|44->11|45->12|45->12|45->12|46->13|46->13|46->13|47->14|47->14|47->14|48->15|48->15|48->15|49->16|49->16|49->16|50->17|50->17|50->17|51->18|51->18|51->18|52->19|52->19|52->19|53->20|53->20|53->20|54->21|54->21|54->21|55->22|55->22|55->22|56->23|56->23|56->23|57->24|57->24|57->24|58->25|58->25|58->25|59->26|59->26|59->26|60->27|60->27|60->27|62->29|62->29|62->29|62->29|63->30|63->30|63->30|63->30|64->31|64->31|64->31|64->31|65->32|65->32|65->32|65->32|75->43|78->46|93->61|93->61|93->61|94->62|94->62|94->62|95->63|95->63|95->63|95->63|96->64|96->64|96->64|97->65|97->65|97->65|97->65|98->66|98->66|98->66|98->66|98->66|99->67|99->67|99->67|99->67|99->67|99->67|100->68|100->68|100->68|101->69|101->69|101->69|101->69|102->70|104->72|129->97|129->97|129->97|130->98|130->98|155->123|155->123|155->123|156->124|156->124|156->124|157->125|157->125|157->125|175->143|175->143|175->143|187->155|187->155|187->155|188->156|188->156|188->156|188->156|188->156|188->156|188->156|189->157|190->158|191->159|245->213|245->213|248->216|326->294|326->294|326->294|327->295|327->295|327->295|328->296|328->296|328->296|329->297|329->297|329->297|330->298|330->298|330->298|331->299|331->299|331->299
                   -- GENERATED --
               */
           

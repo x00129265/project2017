@@ -67,6 +67,13 @@ public class User extends Model {
                         .findUnique();
     }
 
+    public static List<User> findAllCustomers() {
+        return User.find.where()
+                // name like filter value (surrounded by wildcards)
+                .ilike("role", "%customer%")
+                .findList();
+    }
+
     // Check if a user is logged in (by id - email address)
     public static User getUserById(String id) {
         if (id == null)

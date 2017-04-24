@@ -1,0 +1,463 @@
+@import models.Category
+@import models.Product
+@import models.users.User
+
+@(env: play.api.Environment, categories: List[models.Category], products: List[models.Product], user: models.users.User, catId: Long, filter: String)
+
+<!-- Pass page title, user, and content {html between braces} to the main view -->
+@main("about us",user, categories, catId: Long, filter) {
+
+ <!-- Modal -->
+
+	<!-- J.J-->
+	
+
+	<div class="containerblack">
+  <h1>About Us ?</h1>
+  <blockquote>
+    <p>We are A&J. We are an empowering, bold and forward thinking online fashion brand, inspired by real life. We design and create product informed by you, our customers, our friends and global influences: Catwalk, celebrity, social media, bloggers and street style, creating an online fashion destination that encompasses and celebrates everything it means to be a girl in a digitally immersed world today.
+
+With thousands of styles live at one time and fresh new threads hitting down every single day, We’re not just fast fashion, we’re rapid fashion. Our pieces are exclusive and created by our very own design talent who strive to create killer garms for the dreamers, believers and night lovers, taking the risks no one else dares to take.
+
+And most importantly, we believe shopping is a right, not a luxury, so we aim to deliver the biggest trends at the most affordable prices, on a global scale. Along with competitive delivery to 160 countries worldwide, we’re here for when the good times roll.
+
+We do all this and as much as we can to ensure we source ethically and to avoid acts that constitute modern slavery. To this end we have a team that is dedicated to understanding our supply chains, ask them about their operations, ensure they understand what supplying ethically means and provide guidance, training and assistance where necessary. Download our Modern Slavery Statement.
+
+We are A&J, We are real. And we do things the simple way.
+
+Welcome to our world !!!. </p>
+    <footer>From "Herald" Aug 24(2016)</footer>
+  </blockquote>
+</div>
+	 <br>
+      <br>
+
+      <div class="col-md-12">
+
+          
+
+
+            </div>
+</div>
+
+
+ <div class="container">
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Contact Us</h4>
+        </div>
+        <div class="modal-body">
+          <p>Our online Representative will contact you within 2 hours </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="jumbotron text-center">
+  
+  <a>Subscribe for new clothes</a>
+  <form class="form-inline">
+    <input type="email" class="form-control" size="50" placeholder="Email Address" required>
+    <button type="button" class="btn btn-danger">Subscribe</button>
+  </form>
+</div>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+ <form id="contact-form" method="post" action="contact.php" role="form">
+
+    <div class="messages"></div>
+
+    <div class="controls">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_name">Firstname *</label>
+                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_lastname">Lastname *</label>
+                    <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_email">Email *</label>
+                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_phone">Phone</label>
+                    <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your phone">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="form_message">Enquiry *</label>
+                    <textarea id="form_message" name="message" class="form-control" placeholder="Enquiry for me *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                    <div class="help-block with-errors"></div>
+                </div>
+      <div class="checkbox">
+      <label><input type="checkbox"> I'm not Robot</label>
+    </div>
+
+
+            </div>
+            <div class="col-md-12">
+                <input type="button" class="btn btn-success btn-send" value="Send message">
+            </div>
+        </div>
+
+
+ 
+  
+</div>
+
+</body>
+</html>
+
+<div class="container">
+ <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Contact Us</h4>
+        </div>
+        <div class="modal-body">
+          <p>Our online Representative will contact you within 2 hours </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-muted"><strong>*</strong> These fields are required.</p>
+            </div>
+        </div>
+    </div>
+
+</form> 
+</div>
+
+
+<div class="container">
+  <h2>What Our Customers say ??</h2>
+  <p>This was the reviews submited by the Users to the european Shopping watchdog about A&J ():</p><br>
+  <div class="media">
+    <div class="media-left">
+     <img src="/assets/images/productImages/70.jpg" class="media-object" style="width:45px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">John Kean <small><i>Posted on February 19, 2016</i></small></h4>
+      <p>Loved the products always in good quality.</p>
+      
+      <!-- Nested media object -->
+      <div class="media">
+        <div class="media-left">
+         <img src="/assets/images/productImages/10.jpg" class="media-object" style="width:45px">
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">Emily Johnson <small><i>Posted on February 20, 2016</i></small></h4>
+          <p>Bought Two pair of Jeans last week, Got immediate delivery and product in good shape.</p>
+
+          <!-- Nested media object -->
+          <div class="media">
+            <div class="media-left">
+             <img src="/assets/images/productImages/57.jpg" class="media-object" style="width:45px">
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">Adam Thomas <small><i>Posted on February 25, 2016</i></small></h4>
+              <p>Been a loyal customer since start !!!!.</p>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Nested media object -->
+        <div class="media">
+          <div class="media-left">
+           <img src="/assets/images/productImages/50.jpg" class="media-object" style="width:45px">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Jannette Tom <small><i>Posted on February 25, 2016</i></small></h4>
+            <p>j'adore le product je suis tres joy pour la products !! je amor !!!.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!-- Nested media object -->    
+    <div class="media">
+      <div class="media-left">
+       <img src="/assets/images/productImages/71.jpg" class="media-object" style="width:45px">
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">Andy O'neil<small><i>Posted on February 29, 2016</i></small></h4>
+        <p>The delivery was quick really apreciate the fastness.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Page Content -->
+    <div class="container">
+  <div class="col-md-12">
+
+          
+
+                <!-- Side Widget Well -->
+                <div class="well">
+                    <h4>A & J Clothings</h4>
+                    <p>SandyFord Road</p>
+                    <p>Co.Dublin</p>
+                    <p>01234567</p>
+                    <p>087-123456</p>
+                </div>
+
+            </div>
+        <!-- Jumbotron Header -->
+        <header class="jumbotron hero-spacer">
+            <img src="images/locate.png" alt="" style="float:right; padding-right:180px;"/>
+            <h1>How to find us!</h1>
+                   <h4>A & J Clothings</h4>
+                    <p>SandyFord Road</p>
+                    <p>Co.Dublin</p>
+                    <p>01234567</p>
+                    <p>087-123456</p>
+            <h3>We are located in  SandyFord, Dublin .</h3>
+            <p>Come by anytime to see our HQ about enquiries on doing Business with us !</p>            
+            
+            </p>
+        </header>
+
+        <div id="map" style="width:500px;height:500px;background:yellow;"></div>
+        <h3>Our team looks forward to seeing you!</h3>
+<script>
+function myMap() {
+    var mapOptions = {
+        center: new google.maps.LatLng(53.274737, -6.21841),
+        zoom: 18,
+        mapTypeId: google.maps.MapTypeId.HYBRID
+    }
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+        <hr>
+
+
+
+
+
+       
+	<section id="slider"><!--slider-->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-9">
+					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+							<li data-target="#slider-carousel" data-slide-to="1"></li>
+							<li data-target="#slider-carousel" data-slide-to="2"></li>
+						</ol>
+
+						<div class="carousel-inner">
+							<div class="item active">
+								<div class="col-sm-6">
+									<h1><span>A</span>&Js</h1>
+									<h2>Welcome </h2>
+									<p>Find the lowest prices</p>
+									<button type="button" class="btn btn-default get">Get it now</button>
+								</div>
+								<div class="col-sm-6">
+									<img src="/assets/images/home/product5.jpg" class="girl img-responsive" alt="" />
+									
+									<img src="/assets/images/home/new.png"  class="pricing" alt="" />
+
+								
+								
+								</div>
+							</div>
+							<div class="item">
+								<div class="col-sm-6">
+									<h1><span>E</span>-Delivery</h1>
+									<h2>100% Satisfaction</h2>
+									<p>Buy Now get next day Delivery Free </p>
+									<button type="button" class="btn btn-default get">Get it now</button>
+								</div>
+								<div class="col-sm-6">
+									<img src="/assets/images/home/product3.jpg" class="Delivery" alt="" />
+
+									
+								</div>
+							</div>
+
+							<div class="item">
+								<div class="col-sm-6">
+									<h1><span>E</span>-Clothing</h1>
+									<h2>Get Massive Discounts</h2>
+									<p>We provide the best clothing from Fair Trade nations and Huge International collection </p>
+									<button type="button" class="btn btn-default get">Get it now</button>
+								</div>
+								<div class="col-sm-6">
+									<img src="/assets/images/home/product2.jpg" class="Delivery" alt="" />
+
+									
+
+								</div>
+							</div>
+
+						</div>
+
+						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+							<i class="fa fa-angle-left"></i>
+						</a>
+						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+							<i class="fa fa-angle-right"></i>
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section><!--/slider-->
+
+	<div class="col-sm-12 padding-right">
+		<div class="row">
+		@if(flash.containsKey("success")) {
+                <div class="alert alert-success">
+                @flash.get("success")
+                </div>
+            }
+            <div class="features_items"><!--features_items-->
+                <h2 class="title text-center">New products</h2>
+                @for(p <- products) {
+                    <div  class="col-sm-4">
+                        <div  class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    @if(env.resource("public/images/productImages/thumbnails/" + p.getId + ".jpg").isDefined) {
+                                        <img src="/assets/images/productImages/@(p.getId).jpg"/>
+                                    } else {
+                                        <img src="/assets/images/productImages/thumbnails/noImage.png"/>
+                                    }
+
+                                <h2>&euro; @("%.2f".format(p.getPrice))</h2>
+                                <h3>@p.getName</h3>
+                               
+                              
+                                </div>
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <h2>&euro; @("%.2f".format(p.getPrice))</h2>
+                                        <a   href="@routes.HomeController.productDetails(catId, filter, p.getId)" <p> @p.getDescription</p> </a>
+                                        <a href="@routes.ShoppingCtrl.addToBasket(p.getId)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="choose">
+								<ul class="nav nav-pills nav-justified">
+                                    <li><a href="@routes.HomeController.like(catId, filter, p.getId, "index")"><b><i class="glyphicon glyphicon-thumbs-up"></i>Like @p.getPlike().getLikeCount() </a></b></li>
+                                    <li><a href="#"><b><i class="fa fa-plus-square"></i>Add to wishlist</a></b></li>  
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+		</div>
+		</div>
+					
+					
+					
+				</div>
+}

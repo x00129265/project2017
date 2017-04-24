@@ -13,7 +13,7 @@ GET     /products               controllers.HomeController.products(cat:Long ?= 
 
 GET     /productDetails/:id     controllers.HomeController.productDetails(cat:Long ?= 0, filter?="", id: Long)
 
-
+GET     /aboutUs                controllers.HomeController.aboutUs(cat:Long ?= 0, filter?="")
 
 ################################################################################
 # Customer
@@ -23,6 +23,10 @@ GET	    /profileEdit			        controllers.CustomerCtrl.profileEdit(cat:Long ?= 
 GET	    /orderHistory			        controllers.CustomerCtrl.orderHistory(cat:Long ?= 0, filter?="")
 GET     /cancelOrder/:id                controllers.CustomerCtrl.cancelOrder(cat:Long ?= 0, filter?="", id: Long)			
 
+GET     /addToWishlist/:id                          controllers.WishlistCtrl.addToWishlist(id: Long,cat:Long ?= 0, filter?="")
+GET     /emptyWishlist                              controllers.WishlistCtrl.emptyWishlist(cat: Long ?=0, filter?="")
+GET     /DeleteOne/:itemId                          controllers.WishlistCtrl.DeleteOne(itemId: Long, cat:Long ?= 0,filter?="")
+GET     /showWishlist                               controllers.WishlistCtrl.showWishlist(id: Long ?=0, filter?="")
 
 ################################################################################
 # Shopping
@@ -37,6 +41,7 @@ GET     /placeOrder                         controllers.ShoppingCtrl.placeOrder(
 GET     /viewOrder/:id                      controllers.ShoppingCtrl.viewOrder(id: Long, cat:Long ?= 0, filter?="")
 GET 	/payment 		                    controllers.ShoppingCtrl.payment(cat:Long ?= 0, filter?="")
 POST 	/paymentSubmit			            controllers.ShoppingCtrl.paymentSubmit(cat:Long ?= 0, filter?="")
+
 
 
 ################################################################################

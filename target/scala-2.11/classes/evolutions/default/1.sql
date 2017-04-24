@@ -50,6 +50,7 @@ create table order_item (
   order_id                      bigint,
   basket_id                     bigint,
   product_id                    bigint,
+  wishlist_id                   bigint,
   quantity                      integer,
   price                         double,
   constraint pk_order_item primary key (id)
@@ -132,6 +133,14 @@ create table plike_user (
   constraint pk_plike_user primary key (user_email,plike_like_id)
 );
 
+create table wishlist (
+  id                            bigint not null,
+  customer_email                varchar(255),
+  constraint uq_wishlist_customer_email unique (customer_email),
+  constraint pk_wishlist primary key (id)
+);
+create sequence wishlist_seq;
+
 alter table basket add constraint fk_basket_customer_email foreign key (customer_email) references user (email) on delete restrict on update restrict;
 
 alter table category_product add constraint fk_category_product_category foreign key (category_id) references category (id) on delete restrict on update restrict;
@@ -155,6 +164,9 @@ create index ix_order_item_basket_id on order_item (basket_id);
 alter table order_item add constraint fk_order_item_product_id foreign key (product_id) references product (id) on delete restrict on update restrict;
 create index ix_order_item_product_id on order_item (product_id);
 
+alter table order_item add constraint fk_order_item_wishlist_id foreign key (wishlist_id) references wishlist (id) on delete restrict on update restrict;
+create index ix_order_item_wishlist_id on order_item (wishlist_id);
+
 alter table plike add constraint fk_plike_pl_id foreign key (pl_id) references product (id) on delete restrict on update restrict;
 
 alter table product_warehouse add constraint fk_product_warehouse_product_id foreign key (product_id) references product (id) on delete restrict on update restrict;
@@ -177,6 +189,8 @@ create index ix_plike_user_user on plike_user (user_email);
 
 alter table plike_user add constraint fk_plike_user_plike foreign key (plike_like_id) references plike (like_id) on delete restrict on update restrict;
 create index ix_plike_user_plike on plike_user (plike_like_id);
+
+alter table wishlist add constraint fk_wishlist_customer_email foreign key (customer_email) references user (email) on delete restrict on update restrict;
 
 
 # --- !Downs
@@ -204,6 +218,9 @@ drop index if exists ix_order_item_basket_id;
 alter table order_item drop constraint if exists fk_order_item_product_id;
 drop index if exists ix_order_item_product_id;
 
+alter table order_item drop constraint if exists fk_order_item_wishlist_id;
+drop index if exists ix_order_item_wishlist_id;
+
 alter table plike drop constraint if exists fk_plike_pl_id;
 
 alter table product_warehouse drop constraint if exists fk_product_warehouse_product_id;
@@ -226,6 +243,8 @@ drop index if exists ix_plike_user_user;
 
 alter table plike_user drop constraint if exists fk_plike_user_plike;
 drop index if exists ix_plike_user_plike;
+
+alter table wishlist drop constraint if exists fk_wishlist_customer_email;
 
 drop table if exists basket;
 drop sequence if exists basket_seq;
@@ -262,4 +281,7 @@ drop sequence if exists size_seq;
 drop table if exists user;
 
 drop table if exists plike_user;
+
+drop table if exists wishlist;
+drop sequence if exists wishlist_seq;
 

@@ -1,5 +1,6 @@
 package models.users;
 
+import models.shopping.Wishlist;
 import models.shopping.Basket;
 import models.shopping.ShopOrder;
 import models.productsAdditions.*;
@@ -21,6 +22,9 @@ public class Customer extends User{
     private String postCode;
     private String country;
     
+
+    @OneToOne(mappedBy="customer", cascade = CascadeType.ALL)
+    private Wishlist wishlist;
 
     @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     private Basket basket;
@@ -44,11 +48,8 @@ public class Customer extends User{
 		this.country = country;
 	}
 
-    // public static Plike findCustomerPlike(Long pId){
-    //     return Plike.find.where()
-    //             .eq("pl.id", pId)
-    //             .findUnique();
-    // }
+    
+
 
     public void setLikes(List<Plike> likes) {
         this.likes = likes;
@@ -105,6 +106,14 @@ public class Customer extends User{
     public void setBasket(Basket basket) {
         this.basket = basket;
     }
+
+    public Wishlist getWishlist() {
+         return wishlist;
+    }
+
+    public void setWishlist(Wishlist wishlist) {
+          this.wishlist = wishlist;
+    }  
 
     public List<ShopOrder> getOrders() {
         return orders;

@@ -77,10 +77,15 @@ public class HomeController extends Controller {
             productsList = Product.findFilterNoZero(cat, filter);
         }
         int sizeOfLoop=0;
-        if(productsList.size() > 9){
-            sizeOfLoop = 9;
-        } else if (productsList.size() > 6){
+        //Depending on how many products are added index page will display 0 - 12 products
+        if(productsList.size() >= 12){
+            sizeOfLoop = 12;
+        } else if (productsList.size() >= 9){
+            sizeOfLoop =9;
+        } else if (productsList.size() >= 6){
             sizeOfLoop =6;
+        } else if (productsList.size() >= 3){
+            sizeOfLoop =3;
         }
         for(int i = 0; i < sizeOfLoop; i++){
             newProductList.add(productsList.get(i));
@@ -142,6 +147,11 @@ public class HomeController extends Controller {
         Form<User> addUserForm = formFactory.form(User.class).bindFromRequest();
         User u = addUserForm.get();
 
+        if(User.findByEmail(u.getEmail()) != null){
+            flash("fail", "Email is used already");
+            return redirect(controllers.routes.LoginController.login(cat, filter));
+        }
+
         if(addUserForm.hasErrors()){
             flash("fail", "User" + u.getEmail() + "is already in our database.");
             return redirect(controllers.routes.LoginController.login(cat, filter));
@@ -168,10 +178,10 @@ public class HomeController extends Controller {
         if(!hasNumber.matcher(u.getPassword()).find() || !hasNumber.matcher(u.getPassword2()).find()){
             flash("fail", "Password does not have a number");
         }
-
-        if(!hasSpecialChar.matcher(u.getPassword()).find() || !hasSpecialChar.matcher(u.getPassword2()).find()){
-            flash("fail", "Password does not have a special character i.e. !,@,#, etc.");
-        }
+        
+        // if(!hasSpecialChar.matcher(u.getPassword()).find() || !hasSpecialChar.matcher(u.getPassword2()).find()){
+        //     flash("fail", "Password does not have a special character i.e. !,@,#, etc.");
+        // }
 
         if(!hasAt.matcher(u.getEmail()).find()){
             flash("fail", "Email needs an '@' ");
@@ -206,5 +216,34 @@ public class HomeController extends Controller {
         }
     }
 //J.T. end---------------------------------------------------------------------------------------------------------------------------
+//J.J. start-------------------------------------------------------------------------------------------------------------------------
+
+ public Result aboutUs(Long cat, String filter) {
+ 
+        List<Category> categoriesList = Category.findAll();
+        List<Product> productsList = new ArrayList<Product>();
+        List<Product> newProductList = new ArrayList<Product>();
+        if (cat == 0) {
+            // Get list of all categories in ascending order
+            productsList = Product.findAll(filter);
+        }
+        else {
+            // Get products for selected category
+            // Find category first then extract products for that cat.
+            productsList = Product.findFilter(cat, filter);
+    }
+        int sizeOfLoop=0;
+        if(productsList.size() > 0){
+            sizeOfLoop = 0;
+        } else if (productsList.size() > 6){
+            sizeOfLoop =6;
+        }
+        for(int i = 0; i < sizeOfLoop; i++){
+            newProductList.add(productsList.get(i));
+        }
+
+       return ok(aboutUs.render(env, categoriesList, newProductList, getUserFromSession(), cat, filter));
+   }
+//J.J. end-----------------------------------------------------------------------------------------   
 
 }

@@ -67,6 +67,12 @@ public class Warehouse extends User {
                         .findUnique();
     }
 
+	public static Warehouse findWarehouseByEmail(String email) {
+        return Warehouse.find.where()
+                        .eq("email", email)
+                        .findUnique();
+    }
+
 	//Find all warehouses that are not main
 	public static List<Warehouse> findNotMain() {
         return Warehouse.find.where()

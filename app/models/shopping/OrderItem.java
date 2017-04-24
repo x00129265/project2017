@@ -27,6 +27,9 @@ public class OrderItem extends Model {
     
     @ManyToOne
     private Product product;
+
+    @ManyToOne
+    private Wishlist wishlist;
     
     
     private int quantity;
@@ -135,6 +138,14 @@ public class OrderItem extends Model {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Wishlist getWishlist() {
+        return wishlist;
+    }
+
+    public void setWishlist(Wishlist w) {
+        this.wishlist = w;
     }
 
     
